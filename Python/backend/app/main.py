@@ -7,7 +7,7 @@ from pydantic import BaseModel
 from io import BytesIO
 from zipfile import ZipFile
 from datetime import datetime
-from starlette.middleware.cors import CORSMiddleware # 追加 
+from starlette.middleware.cors import CORSMiddleware # 追加
 
 import time
 import sqlite3
