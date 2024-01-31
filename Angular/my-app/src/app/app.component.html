@@ -11,10 +11,6 @@
 </style>
 
 <main class="main">
-  <!-- <users-table></users-table> -->
-  <data-table></data-table>
-  <!-- <users-table></users-table> -->
-  <trash-table></trash-table>
   <h1>ファイルパスを設定</h1>
   <input type="text" [(ngModel)]="filePathNew">
   <button type="button" (click)="filePathUpdate()">更新</button>
@@ -27,62 +23,11 @@
   <hr/>
   <br/>
   <h1>ダウンロード機能</h1>
-  <div class="columns">
-    <div class="column col-12"> 
-      <ng-template #selectAllTemplate let-changeEvent>
-        <label class="ngx-form-checkbox">
-          <input type="checkbox" (input)="changeEvent()" />
-          <i class="ngx-form-icon custom-checkbox-color" id="selectAllCheckbox"></i>
-        </label>
-      </ng-template>
-      <ngx-table [configuration]="configuration" 
-                 [data]="data" 
-                 [columns]="columns"
-                 (event)="eventEmitted($event)"
-                 [selectAllTemplate]="selectAllTemplate">
-      </ngx-table>
-    </div>
-  </div>
-  <ng-template #actionTpl let-rowIndex="rowIndex">
-    <div class="btn btn-primary" (click)="download(rowIndex)">ダウンロード</div>
-    <br/>
-    <div class="btn btn-primary" (click)="deleteFile(rowIndex)">削除</div>
-  </ng-template>
-  <ng-template #pathArea let-rowIndex="rowIndex">
-    <p class="overflow-x-scroll" style="width: 200px;">{{ pathAreaDisplayer(rowIndex) }}</p>
-  </ng-template>
-  <!-- <p>{{ selected }}</p> -->
-  <button type="button" (click)="multipleDownload()">一括ダウンロード</button>
-                 <!-- v-model:items-selected="itemsSelected"  -->
+  <data-table></data-table>
   <hr/>
   <br/>
   <h1>ゴミ箱</h1>
-  <div class="columns">
-    <div class="column col-12">
-      <ng-template #selectAllTemplateTrashCan let-changeEvent>
-        <label class="ngx-form-checkbox">
-          <input type="checkbox" (input)="changeEvent()" />
-          <i class="ngx-form-icon custom-checkbox-color" id="selectAllTrashCanCheckbox"></i>
-        </label>
-      </ng-template>
-      <ngx-table [configuration]="configurationTrashCan"
-                 [data]="dataTrashCan" 
-                 [columns]="columnsTrashCan"
-                 (event)="eventEmittedTrashCan($event)"
-                 [selectAllTemplate]="selectAllTemplateTrashCan">
-      </ngx-table>
-    </div>
-  </div>
-  <ng-template #actionTplTrashCan let-rowIndex="rowIndex">
-    <div class="btn btn-primary" (click)="cancelDeleteFile(rowIndex)">データ復旧</div>
-    <br/>
-    <div class="btn btn-primary" (click)="deleteFilePermanently(rowIndex)">完全削除</div>
-  </ng-template>
-  <ng-template #pathAreaTrashCan let-rowIndex="rowIndex">
-    <p class="overflow-x-scroll" style="width: 200px;">{{ pathAreaTrashCanDisplayer(rowIndex) }}</p>
-  </ng-template>
-  <!-- <button type="button">一括データ復旧</button>
-  <button type="button">一括永久削除</button> -->
+  <trash-table></trash-table>
 </main>
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
