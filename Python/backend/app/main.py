@@ -68,8 +68,8 @@ def searchAll():
             sqlConnect.commit()
 
     # 削除してないデータを検索
-    fileSearchExistResult = sqlCursor.execute("SELECT * FROM file WHERE DEL_FLG = 0")
-    # fileSearchExistResult = sqlCursor.execute("SELECT * FROM file WHERE DEL_FLG = 1")
+    # fileSearchExistResult = sqlCursor.execute("SELECT * FROM file WHERE DEL_FLG = 0")
+    fileSearchExistResult = sqlCursor.execute("SELECT * FROM file WHERE DEL_FLG = 1")
     resultReturn = []
     # 検索結果を取り出す
     # print(fileSearchResult.fetchall())

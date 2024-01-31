@@ -5,8 +5,8 @@ import { SortingInterface } from "../../types/sorting.interface";
 import { FormBuilder } from "@angular/forms";
 
 @Component({
-    // selector: 'data-table', // <users-table></users-table>で当コンポーネントを使う
-    selector: 'users-table', // <users-table></users-table>で当コンポーネントを使う
+    selector: 'data-table', // <users-table></users-table>で当コンポーネントを使う
+    // selector: 'users-table', // <users-table></users-table>で当コンポーネントを使う
     templateUrl: './usersTable.component.html',
     styleUrls: ['./usersTable.component.scss'],
 })
