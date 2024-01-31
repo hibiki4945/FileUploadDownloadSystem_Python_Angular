@@ -28,8 +28,29 @@ app.add_middleware(
 class Item(BaseModel):
     pathStr:str
 
+
 # データベースにある資料を検索
-@app.post("/searchAll")
+@app.get("/users")
+async def getUsers(_sort: str, _order: str, name_like: str):
+    print("getUsers!")
+    print("_sort: "+_sort)
+    print("_order: "+_order)
+    print("name_like: "+name_like)
+
+    if(name_like == "2"):
+            return [{"id": "2", "name": "Jack2", "age": 20}]
+        
+    if(_sort == "id"):
+        if(_order == "asc"):
+            # 検索結果を返す
+            return [{"id": "1", "name": "Jack", "age": 20},{"id": "2", "name": "Jack2", "age": 20}]
+        else:
+            return [{"id": "2", "name": "Jack2", "age": 20},{"id": "1", "name": "Jack", "age": 20}]
+    else:
+            return [{"id": "1", "name": "Jack", "age": 20},{"id": "2", "name": "Jack2", "age": 20}]
+        
+# データベースにある資料を検索
+@app.get("/searchAll")
 def searchAll():
     # データベースと接続
     sqlConnect = sqlite3.connect("file_manage.db")
@@ -49,14 +70,31 @@ def searchAll():
     resultReturn = []
     # 検索結果を取り出す
     for  item  in  fileSearchExistResult.fetchall():
-        resultReturn.append(item)
+        print(item)
+        print(item[0])
+        itemTemp = {
+            "FILE_NO": item[0],
+            "FILE_NAME": item[1],
+            "FILE_SIZE": item[2],
+            "UPDATE_YEAR": item[3],
+            "UPDATE_MONTH": item[4],
+            "UPDATE_DAY": item[5],
+            "FILE_FORMAT": item[6],
+            "FILE_PATH": item[7],
+            "SAVE_NAME": item[8],
+            "DEL_FLG": item[9],
+        }
+        # resultReturn.append(item)
+        resultReturn.append(itemTemp)
     sqlConnect.close()
 
     # 検索結果を返す
-    return {'code': '200', 'resultReturn': resultReturn}
+    # return {'code': '200', 'resultReturn': resultReturn}
+    return resultReturn
 
-@app.post("/searchAllTrashCan")
+@app.get("/searchAllTrashCan")
 def searchAllTrashCan():
+    print("searchAllTrashCan!")
     # データベースと接続
     sqlConnect= sqlite3.connect("file_manage.db")
     sqlCursor= sqlConnect.cursor()
@@ -73,12 +111,28 @@ def searchAllTrashCan():
     fileSearchNoExistResult = sqlCursor.execute("SELECT * FROM file WHERE DEL_FLG = 1")
     resultReturn = []
     # 検索結果を取り出す
+    # 検索結果を取り出す
     for  item  in  fileSearchNoExistResult.fetchall():
-        resultReturn.append(item)
+        print(item)
+        print(item[0])
+        itemTemp = {
+            "FILE_NO": item[0],
+            "FILE_NAME": item[1],
+            "FILE_SIZE": item[2],
+            "UPDATE_YEAR": item[3],
+            "UPDATE_MONTH": item[4],
+            "UPDATE_DAY": item[5],
+            "FILE_FORMAT": item[6],
+            "FILE_PATH": item[7],
+            "SAVE_NAME": item[8],
+            "DEL_FLG": item[9],
+        }
+        # resultReturn.append(item)
+        resultReturn.append(itemTemp)
     sqlConnect.close()
 
     # 検索結果を返す
-    return {'code': '200', 'resultReturn': resultReturn}
+    return resultReturn
 
 @app.post("/searchFilePath")
 def searchFilePath():
@@ -228,22 +282,29 @@ def upload(files: List[UploadFile] = File(...),clientName: str = Form(...)):
 
 # ファイルをダウンロード
 @app.post("/download")
-def download(userName: str = Form(...), name: str = Form(...)):
+# @app.get("/download")
+# def download(userName: str = Form(...), name: str = Form(...)):
+# def download(fileNo: int = Form(...)):
+def download(fileNo: int):
+    print("download!")
 
     # データベースと接続
     sqlConnect= sqlite3.connect("file_manage.db")
     sqlCursor= sqlConnect.cursor()
 
     # ファイル名とユーザーナンバーで検索
-    fileSearchResult = sqlCursor.execute(f"SELECT * FROM file WHERE FILE_NAME = '{name}' and SAVE_NAME LIKE '%{userName}'")
+    # fileSearchResult = sqlCursor.execute(f"SELECT * FROM file WHERE FILE_NAME = '{name}' and SAVE_NAME LIKE '%{userName}'")
+    fileSearchResult = sqlCursor.execute(f"SELECT * FROM file WHERE FILE_NO = '{fileNo}'")
     for  item  in  fileSearchResult.fetchall():
         resultGet = item[7]
+        name = item[1]
     
     filePath = Path(resultGet)
     fileName = name
 
     # # 当ファイルパスでファイルを読み取り、ファイル名とともに返す
-    return FileResponse(filePath, filename=fileName, media_type='application/octet-stream')
+    # return FileResponse(filePath, filename=fileName, media_type='application/octet-stream')
+    return FileResponse(filePath, media_type='application/octet-stream')
 
 # ファイルをダウンロード
 @app.post("/multipleDownload")
@@ -283,12 +344,13 @@ def multipleDownload(userNameList: List[str] = Form(...), nameList: List[str] = 
 
 # ファイルをダウンロード
 @app.post("/delete")
-def delete(pathStr:Item):
+# def delete(pathStr:Item):
+def delete(fileNo: int):
     print("delete!")
-    print(pathStr)
+    # print(pathStr)
     
-    fileNo = str(pathStr).split("'")[-2]
-    print("fileNo: "+fileNo)
+    # fileNo = str(pathStr).split("'")[-2]
+    # print("fileNo: "+fileNo)
 
     # データベースと接続
     sqlConnect= sqlite3.connect("file_manage.db")
@@ -308,9 +370,10 @@ def delete(pathStr:Item):
 
 # ファイルをダウンロード
 @app.post("/cancelDelete")
-def cancelDelete(pathStr:Item):
+# def cancelDelete(pathStr:Item):
+def cancelDelete(fileNo: int):
     
-    fileNo = str(pathStr).split("'")[-2]
+    # fileNo = str(pathStr).split("'")[-2]
 
     # データベースと接続
     sqlConnect= sqlite3.connect("file_manage.db")
@@ -327,9 +390,7 @@ def cancelDelete(pathStr:Item):
     return {'code': '200'}
 
 @app.post("/deletePermanently")
-def deletePermanently(pathStr:Item):
-
-    fileNo = str(pathStr).split("'")[-2]
+def deletePermanently(fileNo: int):
 
     # データベースと接続
     sqlConnect= sqlite3.connect("file_manage.db")
