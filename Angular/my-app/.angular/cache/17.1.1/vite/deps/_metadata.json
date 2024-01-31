@@ -1,0 +1,73 @@
+{
+  "hash": "d9516263",
+  "configHash": "c1ffaad0",
+  "lockfileHash": "c26702ac",
+  "browserHash": "ff1a7c56",
+  "optimized": {
+    "@angular/common": {
+      "src": "../../../../../node_modules/@angular/common/fesm2022/common.mjs",
+      "file": "@angular_common.js",
+      "fileHash": "cfb9e29d",
+      "needsInterop": false
+    },
+    "@angular/core": {
+      "src": "../../../../../node_modules/@angular/core/fesm2022/core.mjs",
+      "file": "@angular_core.js",
+      "fileHash": "bf8ed851",
+      "needsInterop": false
+    },
+    "@angular/forms": {
+      "src": "../../../../../node_modules/@angular/forms/fesm2022/forms.mjs",
+      "file": "@angular_forms.js",
+      "fileHash": "dc4551f2",
+      "needsInterop": false
+    },
+    "@angular/platform-browser": {
+      "src": "../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
+      "file": "@angular_platform-browser.js",
+      "fileHash": "bc338dc1",
+      "needsInterop": false
+    },
+    "@angular/router": {
+      "src": "../../../../../node_modules/@angular/router/fesm2022/router.mjs",
+      "file": "@angular_router.js",
+      "fileHash": "906a2cda",
+      "needsInterop": false
+    },
+    "@ng-bootstrap/ng-bootstrap": {
+      "src": "../../../../../node_modules/@ng-bootstrap/ng-bootstrap/fesm2022/ng-bootstrap.mjs",
+      "file": "@ng-bootstrap_ng-bootstrap.js",
+      "fileHash": "da36b5b9",
+      "needsInterop": false
+    },
+    "axios": {
+      "src": "../../../../../../node_modules/axios/index.js",
+      "file": "axios.js",
+      "fileHash": "89de3773",
+      "needsInterop": false
+    },
+    "ngx-easy-table": {
+      "src": "../../../../../node_modules/ngx-easy-table/fesm2022/ngx-easy-table.mjs",
+      "file": "ngx-easy-table.js",
+      "fileHash": "a8a84fc5",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-O7NBNC4Z": {
+      "file": "chunk-O7NBNC4Z.js"
+    },
+    "chunk-5D5TSWXU": {
+      "file": "chunk-5D5TSWXU.js"
+    },
+    "chunk-SH3ZCXNB": {
+      "file": "chunk-SH3ZCXNB.js"
+    },
+    "chunk-3KOKM7AO": {
+      "file": "chunk-3KOKM7AO.js"
+    },
+    "chunk-GLLL6ZVE": {
+      "file": "chunk-GLLL6ZVE.js"
+    }
+  }
+}
