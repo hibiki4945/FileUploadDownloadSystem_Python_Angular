@@ -2,6 +2,7 @@ import { Component, ChangeDetectionStrategy, OnInit, TemplateRef, ViewChild } fr
 import { RouterOutlet } from '@angular/router';
 // import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms'; 
 import { ReactiveFormsModule } from '@angular/forms';
 // import { BrowserModule } from '@angular/platform-browser';
@@ -43,6 +44,7 @@ import axios from 'axios';
     TableModule,
     NgbAlert,
     DataTableModule,
+    HttpClientModule
     // TrashCanTableModule,
   ],
   templateUrl: './app.component.html',

@@ -52,12 +52,14 @@ async def getUsers(_sort: str, _order: str, name_like: str):
 # データベースにある資料を検索
 @app.get("/searchAll")
 def searchAll():
+    print("searchAll!")
     # データベースと接続
     sqlConnect = sqlite3.connect("file_manage.db")
     sqlCursor = sqlConnect.cursor()
 
     # 全ての資料を検索（ret1で検索結果を記録）
     fileSearchResult = sqlCursor.execute("SELECT * FROM file")
+    print(fileSearchResult.fetchall())
     for  item  in  fileSearchResult.fetchall():
         file_path = Path(item[7])
         # ファイルがファイルパスにない場合、データベースにある資料を削除
@@ -67,8 +69,10 @@ def searchAll():
 
     # 削除してないデータを検索
     fileSearchExistResult = sqlCursor.execute("SELECT * FROM file WHERE DEL_FLG = 0")
+    # fileSearchExistResult = sqlCursor.execute("SELECT * FROM file WHERE DEL_FLG = 1")
     resultReturn = []
     # 検索結果を取り出す
+    # print(fileSearchResult.fetchall())
     for  item  in  fileSearchExistResult.fetchall():
         print(item)
         print(item[0])
@@ -88,6 +92,7 @@ def searchAll():
         resultReturn.append(itemTemp)
     sqlConnect.close()
 
+    print(resultReturn)
     # 検索結果を返す
     # return {'code': '200', 'resultReturn': resultReturn}
     return resultReturn
