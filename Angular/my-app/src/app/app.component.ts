@@ -10,7 +10,7 @@ import { TableModule } from 'ngx-easy-table';
 import { Columns, Config, DefaultConfig } from 'ngx-easy-table';
 import { NgbAlert } from '@ng-bootstrap/ng-bootstrap';
 import { DataTableModule } from './Table/Data/usersTable.module';
-// import { TrashCanTableModule } from './Table/TrashCan/usersTable.module';
+import { TrashCanTableModule } from './Table/TrashCan/usersTable.module';
 // axiosでapiと接続
 import axios from 'axios';
 
@@ -44,8 +44,8 @@ import axios from 'axios';
     TableModule,
     NgbAlert,
     DataTableModule,
-    HttpClientModule
-    // TrashCanTableModule,
+    HttpClientModule,
+    TrashCanTableModule,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',

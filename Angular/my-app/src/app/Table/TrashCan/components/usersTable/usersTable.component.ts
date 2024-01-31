@@ -5,8 +5,8 @@ import { SortingInterface } from "../../types/sorting.interface";
 import { FormBuilder } from "@angular/forms";
 
 @Component({
-    // selector: 'trashCan-table', // <users-table></users-table>で当コンポーネントを使う
-    selector: 'users-table', // <users-table></users-table>で当コンポーネントを使う
+    selector: 'trash-table', // <users-table></users-table>で当コンポーネントを使う
+    // selector: 'users-table', // <users-table></users-table>で当コンポーネントを使う
     templateUrl: './usersTable.component.html',
     styleUrls: ['./usersTable.component.scss'],
 })
@@ -38,7 +38,7 @@ export class UsersTableComponent implements OnInit {
     constructor(private usersService: UsersService, private fb: FormBuilder) {}
 
     ngOnInit(): void {
-        this.searchAll()
+        this.searchAllTrashCan()
     }
 
     searchAll(): void {
