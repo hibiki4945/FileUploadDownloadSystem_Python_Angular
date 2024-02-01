@@ -1,3 +1,4 @@
+import array
 from pathlib import Path
 from typing import List
 from fastapi import  FastAPI, File, UploadFile, Form
@@ -313,15 +314,32 @@ def download(fileNo: int):
     # return FileResponse(filePath, filename=fileName, media_type='application/octet-stream')
     return FileResponse(filePath, media_type='application/octet-stream')
 
+
+class ItemInt(BaseModel):
+    name: list[int]
+
 # ファイルをダウンロード
 @app.post("/multipleDownload")
-def multipleDownload(userNameList: List[str] = Form(...), nameList: List[str] = Form(...)):
+def multipleDownload(fileNoListStr: str):
+# def multipleDownload(fileNoList: List[int] = Form(...)):
+    print(fileNoListStr)
+    fileNoListStrSplit = fileNoListStr.split(",")
+    # fileNoList = list[int]
+    fileNoList = []
+    for item in fileNoListStrSplit:
+        print(item)
+        print(type(item))
+        print(int(item))
+        print(type(int(item)))
+        fileNoList.append(int(item))
+    print(fileNoList)
 
     # ファイルパスとファイル名を保存用
     files = []
     # 各ファイルのファイルパスとファイル名を保存
-    for item in nameList:
-        userName = userNameList[0]
+    for item in fileNoList:
+        # userName = userNameList[0]
+        # userName = "A01"
         name = item
 
         # データベースと接続
@@ -329,12 +347,13 @@ def multipleDownload(userNameList: List[str] = Form(...), nameList: List[str] = 
         sqlCursor= sqlConnect.cursor()
 
         # ファイル名とユーザーナンバーで検索
-        fileSearchResult = sqlCursor.execute(f"SELECT * FROM file WHERE FILE_NAME = '{name}' and SAVE_NAME LIKE '%{userName}'")
+        # fileSearchResult = sqlCursor.execute(f"SELECT * FROM file WHERE FILE_NAME = '{name}' and SAVE_NAME LIKE '%{userName}'")
+        fileSearchResult = sqlCursor.execute(f"SELECT * FROM file WHERE FILE_NO = '{name}'")
         for  item  in  fileSearchResult.fetchall():
             resultGet = item[7]
         # ファイルパスとファイル名を保存
         filePath = Path(resultGet)
-        fileName = name
+        fileName = "name"
         files.append((filePath, fileName))
 
     # 各ファイルをまとめて、Bytesとしてzipに入れる

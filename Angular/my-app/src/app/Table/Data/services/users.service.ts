@@ -36,4 +36,29 @@ export class UsersService {
         return this.httpClient.post(url, {});
     };
 
+    // multipleDownload(fileNoList: number[]){
+    multipleDownload(fileNoList0: number[]) {
+        const fileNoListStr = fileNoList0.toString()
+        console.log(fileNoListStr)
+        // const url = `http://127.0.0.1:8000/multipleDownload`;
+        const url = `http://127.0.0.1:8000/multipleDownload\?fileNoListStr=${fileNoListStr}`;
+        // const url = `http://127.0.0.1:8000/multipleDownload\?fileNoList=${[]}`;
+        // const url = `http://127.0.0.1:8000/multipleDownload\?fileNoList=${[0, 1]}`;
+        // const url = `http://127.0.0.1:8000/download`;
+        // return this.httpClient.post(url, {fileNoList: fileNoList});
+        // return this.httpClient.post(url, {fileNoList});
+        // const body = { fileNoList };
+        // const body = 0;
+        
+        // return this.httpClient.post(url, body);
+        return this.httpClient.post(url, {},
+            { 
+            headers: new HttpHeaders({'Content-Type': 'octet/stream',
+                                        'Accept': 'octet/stream'}),
+            responseType: 'arraybuffer'
+            });
+        // return this.httpClient.get(url);
+    };
+
+
 }

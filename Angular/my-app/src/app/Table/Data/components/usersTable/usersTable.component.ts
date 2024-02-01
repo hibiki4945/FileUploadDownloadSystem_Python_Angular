@@ -5,12 +5,13 @@ import { SortingInterface } from "../../types/sorting.interface";
 import { FormBuilder } from "@angular/forms";
 // import { BehaviorSubject } from "rxjs";
 // import { TrashCanTableModule } from '../../../TrashCan/usersTable.module';
+// import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @Component({
     selector: 'data-table', // <users-table></users-table>で当コンポーネントを使う
     // selector: 'users-table', // <users-table></users-table>で当コンポーネントを使う
     // standalone: true,
-    // imports: [TrashCanTableModule],
+    // imports: [MatCheckboxModule],
     templateUrl: './usersTable.component.html',
     styleUrls: ['./usersTable.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -22,6 +23,8 @@ export class UsersTableComponent implements OnInit {
     // constructor(private changeDetector: ChangeDetectorRef) {
     //     this.messageArray = new BehaviorSubject<Array<any>>([{message: "test message 1", style: "answer"}]);
     // }
+
+    checkedList: number[] = [];
 
     users: UserInterface[] = [];
     // users: BehaviorSubject<UserInterface[]>;
@@ -141,6 +144,41 @@ export class UsersTableComponent implements OnInit {
             // console.log("deleteFile03")
             // this.searchAll()
             // console.log("deleteFile04")
+        };
+
+        updateSelected(fileNo: number, event: Event){
+            const ischecked = (<HTMLInputElement>event.target).checked
+            // console.log(fileNo);
+            // console.log(ischecked);
+            // console.log(this.checkedList.indexOf(fileNo));
+            const index = this.checkedList.indexOf(fileNo);
+
+            if(index !== -1 && ischecked === false)
+                this.checkedList.splice(index, 1);
+            else if(index === -1 && ischecked === true)
+                this.checkedList.push(fileNo);
+
+            console.log(this.checkedList);
+
+        };
+
+        multipleDownload(){
+            this.usersService.multipleDownload(this.checkedList)
+                .subscribe(users => {
+                    // ファイルをURLとして生成
+                    const url = window.URL.createObjectURL(new Blob([users],
+                        { type: 'application/octet-stream' }));//　octet-streamはファイル形式を指定しない場合に使う
+                    // ダウンロード用のリンクを生成
+                    const link = document.createElement('a');
+                    // リンク先は当ファイルと設定
+                    link.href = url;
+                    // 'download'は当リンクの内容をダウンロード
+                    link.setAttribute('download', 'download.zip');
+                    // 当リンクを画面に追加
+                    document.body.appendChild(link);
+                    // 当リンクをクリックし、ダウンロードを行う
+                    link.click();
+            });
         };
 
 }
