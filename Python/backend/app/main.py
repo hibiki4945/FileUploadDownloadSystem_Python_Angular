@@ -158,6 +158,8 @@ def searchFilePath():
     filePathSearchResultNew = sqlCursor.execute("SELECT * FROM filePath where FILE_PATH_NO = 1")
     for  item  in  filePathSearchResultNew.fetchall():
         resultReturn = item[1]
+    print("01")
+    print(resultReturn)
 
     # 検索結果を返す
     return {'code': '200', 'path': resultReturn}

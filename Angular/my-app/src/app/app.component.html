@@ -15,15 +15,16 @@
   <router-outlet></router-outlet>
   <nav>
     <a class="button" routerLink="/crisis-list">Crisis Center</a> |
-    <a class="button" routerLink="/heroes-list">Heroes</a>
+    <a class="button" routerLink="/heroes-list">Heroes</a> |
+    <a class="button" routerLink="/path-set">PathSet</a>
   </nav>
   
-  <h1>ファイルパスを設定</h1>
+  <!-- <h1>ファイルパスを設定</h1>
   <input type="text" [(ngModel)]="filePathNew">
   <button type="button" (click)="filePathUpdate()">更新</button>
   <p>今のファイルパス : {{ filePath }}</p>
   <hr/>
-  <br/>
+  <br/> -->
   <h1>アップロード機能</h1>
   <button type="submit" (click)="updateSend()">アップロード</button>
   <input name="file" type="file" (change)="update($event)" multiple/>
