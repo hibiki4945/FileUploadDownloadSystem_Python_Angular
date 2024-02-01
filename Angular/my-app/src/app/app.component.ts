@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy, OnInit, TemplateRef, ViewChild } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 // import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
@@ -11,6 +11,8 @@ import { Columns, Config, DefaultConfig } from 'ngx-easy-table';
 import { NgbAlert } from '@ng-bootstrap/ng-bootstrap';
 import { DataTableModule } from './Table/Data/usersTable.module';
 import { TrashCanTableModule } from './Table/TrashCan/usersTable.module';
+import { CrisisListComponent } from './crisis-list/crisis-list.component';
+import { HeroesListComponent } from './heroes-list/heroes-list.component';
 // axiosでapiと接続
 import axios from 'axios';
 
@@ -46,6 +48,10 @@ import axios from 'axios';
     DataTableModule,
     HttpClientModule,
     TrashCanTableModule,
+    CrisisListComponent,
+    HeroesListComponent,
+    RouterOutlet,
+    RouterLink,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',

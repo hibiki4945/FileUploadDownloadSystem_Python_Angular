@@ -11,6 +11,13 @@
 </style>
 
 <main class="main">
+  <h1>Angular Router Sample</h1>
+  <router-outlet></router-outlet>
+  <nav>
+    <a class="button" routerLink="/crisis-list">Crisis Center</a> |
+    <a class="button" routerLink="/heroes-list">Heroes</a>
+  </nav>
+  
   <h1>ファイルパスを設定</h1>
   <input type="text" [(ngModel)]="filePathNew">
   <button type="button" (click)="filePathUpdate()">更新</button>
