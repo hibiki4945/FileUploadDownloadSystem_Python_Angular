@@ -4,10 +4,13 @@ import { UserInterface } from "../../types/user.interface";
 import { SortingInterface } from "../../types/sorting.interface";
 import { FormBuilder } from "@angular/forms";
 // import { BehaviorSubject } from "rxjs";
+// import { TrashCanTableModule } from '../../../TrashCan/usersTable.module';
 
 @Component({
     selector: 'data-table', // <users-table></users-table>で当コンポーネントを使う
     // selector: 'users-table', // <users-table></users-table>で当コンポーネントを使う
+    // standalone: true,
+    // imports: [TrashCanTableModule],
     templateUrl: './usersTable.component.html',
     styleUrls: ['./usersTable.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,

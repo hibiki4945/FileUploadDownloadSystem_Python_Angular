@@ -7,6 +7,7 @@ import { FormBuilder } from "@angular/forms";
 @Component({
     selector: 'trash-table', // <users-table></users-table>で当コンポーネントを使う
     // selector: 'users-table', // <users-table></users-table>で当コンポーネントを使う
+    // imports: [],
     templateUrl: './usersTable.component.html',
     styleUrls: ['./usersTable.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
