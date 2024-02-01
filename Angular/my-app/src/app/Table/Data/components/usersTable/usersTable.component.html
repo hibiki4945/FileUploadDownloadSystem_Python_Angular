@@ -44,7 +44,8 @@
     <tbody>
         <tr *ngFor="let user of users">
             <td class="users-table-cell">
-                <input type="checkbox" (change)="updateSelected(user['FILE_NO'], $event)"/>
+                <!-- <input type="checkbox" (change)="updateSelected(user['FILE_NO'], $event)"/> -->
+                <input type="checkbox" (change)="updateSelected(user['FILE_NAME'], $event)"/>
             </td>
             <td class="users-table-cell">
                 <button type="button" (click)="download(user['FILE_NO'], user['FILE_NAME'])">ダウンロード</button>

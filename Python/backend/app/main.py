@@ -327,11 +327,12 @@ def multipleDownload(fileNoListStr: str):
     # fileNoList = list[int]
     fileNoList = []
     for item in fileNoListStrSplit:
-        print(item)
-        print(type(item))
-        print(int(item))
-        print(type(int(item)))
-        fileNoList.append(int(item))
+        # print(item)
+        # print(type(item))
+        # print(int(item))
+        # print(type(int(item)))
+        fileNoList.append(item)
+        # fileNoList.append(int(item))
     print(fileNoList)
 
     # ファイルパスとファイル名を保存用
@@ -339,7 +340,7 @@ def multipleDownload(fileNoListStr: str):
     # 各ファイルのファイルパスとファイル名を保存
     for item in fileNoList:
         # userName = userNameList[0]
-        # userName = "A01"
+        userName = "A01"
         name = item
 
         # データベースと接続
@@ -347,13 +348,13 @@ def multipleDownload(fileNoListStr: str):
         sqlCursor= sqlConnect.cursor()
 
         # ファイル名とユーザーナンバーで検索
-        # fileSearchResult = sqlCursor.execute(f"SELECT * FROM file WHERE FILE_NAME = '{name}' and SAVE_NAME LIKE '%{userName}'")
-        fileSearchResult = sqlCursor.execute(f"SELECT * FROM file WHERE FILE_NO = '{name}'")
+        fileSearchResult = sqlCursor.execute(f"SELECT * FROM file WHERE FILE_NAME = '{name}' and SAVE_NAME LIKE '%{userName}'")
+        # fileSearchResult = sqlCursor.execute(f"SELECT * FROM file WHERE FILE_NO = '{name}'")
         for  item  in  fileSearchResult.fetchall():
             resultGet = item[7]
         # ファイルパスとファイル名を保存
         filePath = Path(resultGet)
-        fileName = "name"
+        fileName = name
         files.append((filePath, fileName))
 
     # 各ファイルをまとめて、Bytesとしてzipに入れる

@@ -24,7 +24,7 @@ export class UsersTableComponent implements OnInit {
     //     this.messageArray = new BehaviorSubject<Array<any>>([{message: "test message 1", style: "answer"}]);
     // }
 
-    checkedList: number[] = [];
+    checkedList: string[] = [];
 
     users: UserInterface[] = [];
     // users: BehaviorSubject<UserInterface[]>;
@@ -146,19 +146,19 @@ export class UsersTableComponent implements OnInit {
             // console.log("deleteFile04")
         };
 
-        updateSelected(fileNo: number, event: Event){
+        updateSelected(fileName: string, event: Event){
             const ischecked = (<HTMLInputElement>event.target).checked
             // console.log(fileNo);
             // console.log(ischecked);
             // console.log(this.checkedList.indexOf(fileNo));
-            const index = this.checkedList.indexOf(fileNo);
+            const index = this.checkedList.indexOf(fileName);
 
             if(index !== -1 && ischecked === false)
                 this.checkedList.splice(index, 1);
             else if(index === -1 && ischecked === true)
-                this.checkedList.push(fileNo);
+                this.checkedList.push(fileName);
 
-            console.log(this.checkedList);
+            // console.log(this.checkedList);
 
         };
 

@@ -37,7 +37,7 @@ export class UsersService {
     };
 
     // multipleDownload(fileNoList: number[]){
-    multipleDownload(fileNoList0: number[]) {
+    multipleDownload(fileNoList0: string[]) {
         const fileNoListStr = fileNoList0.toString()
         console.log(fileNoListStr)
         // const url = `http://127.0.0.1:8000/multipleDownload`;
