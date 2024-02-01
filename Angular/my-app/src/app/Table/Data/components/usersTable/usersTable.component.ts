@@ -1,17 +1,27 @@
-import { Component, OnInit } from "@angular/core";
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from "@angular/core";
 import { UsersService } from "../../services/users.service";
 import { UserInterface } from "../../types/user.interface";
 import { SortingInterface } from "../../types/sorting.interface";
 import { FormBuilder } from "@angular/forms";
+// import { BehaviorSubject } from "rxjs";
 
 @Component({
     selector: 'data-table', // <users-table></users-table>で当コンポーネントを使う
     // selector: 'users-table', // <users-table></users-table>で当コンポーネントを使う
     templateUrl: './usersTable.component.html',
     styleUrls: ['./usersTable.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UsersTableComponent implements OnInit {
+    
+    // messageArray: BehaviorSubject<Array<any>>;
+
+    // constructor(private changeDetector: ChangeDetectorRef) {
+    //     this.messageArray = new BehaviorSubject<Array<any>>([{message: "test message 1", style: "answer"}]);
+    // }
+
     users: UserInterface[] = [];
+    // users: BehaviorSubject<UserInterface[]>;
     usersTemp: UserInterface = {
         FILE_NO: 0,
         FILE_NAME: "",
@@ -35,7 +45,10 @@ export class UsersTableComponent implements OnInit {
         searchValue: '',
     });
 
-    constructor(private usersService: UsersService, private fb: FormBuilder) {}
+    constructor(private usersService: UsersService, private fb: FormBuilder, private changeDetector: ChangeDetectorRef) {}
+    // constructor(private usersService: UsersService, private fb: FormBuilder, private changeDetector: ChangeDetectorRef) {
+    //     this.users = new BehaviorSubject<UserInterface[]>([]);
+    // }
 
     ngOnInit(): void {
         this.searchAll()
@@ -47,6 +60,8 @@ export class UsersTableComponent implements OnInit {
             // users: UserInterface[] = [];
             
             this.users = users
+            // this.users = [...this.users]
+            this.changeDetector.markForCheck();
             console.log(this.users)
         });
     }
@@ -112,11 +127,17 @@ export class UsersTableComponent implements OnInit {
         
         // ファイルを削除 
         deleteFile(fileNo: number){
+            console.log("deleteFile01")
             this.usersService.delete(fileNo)
                 .subscribe(users => {
+                    console.log("deleteFile02")
                     this.searchAll()
+                    console.log(this.users)
                     // this.searchAllTrashCan();
             });
+            // console.log("deleteFile03")
+            // this.searchAll()
+            // console.log("deleteFile04")
         };
 
 }

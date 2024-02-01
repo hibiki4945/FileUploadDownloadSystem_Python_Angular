@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from "@angular/core";
 import { UsersService } from "../../services/users.service";
 import { UserInterface } from "../../types/user.interface";
 import { SortingInterface } from "../../types/sorting.interface";
@@ -9,6 +9,7 @@ import { FormBuilder } from "@angular/forms";
     // selector: 'users-table', // <users-table></users-table>で当コンポーネントを使う
     templateUrl: './usersTable.component.html',
     styleUrls: ['./usersTable.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UsersTableComponent implements OnInit {
     users: UserInterface[] = [];
@@ -35,7 +36,7 @@ export class UsersTableComponent implements OnInit {
         searchValue: '',
     });
 
-    constructor(private usersService: UsersService, private fb: FormBuilder) {}
+    constructor(private usersService: UsersService, private fb: FormBuilder, private changeDetector: ChangeDetectorRef) {}
 
     ngOnInit(): void {
         this.searchAllTrashCan()
@@ -44,12 +45,14 @@ export class UsersTableComponent implements OnInit {
     searchAll(): void {
         this.usersService.searchAll(this.sorting, this.searchValue).subscribe(users => {
             this.users = users
+            this.changeDetector.markForCheck();
         });
     }
 
     searchAllTrashCan(): void {
         this.usersService.searchAllTrashCan(this.sorting, this.searchValue).subscribe(users => {
             this.users = users
+            this.changeDetector.markForCheck();
         });
     }
 
@@ -72,13 +75,15 @@ export class UsersTableComponent implements OnInit {
             order: futureSortingOrder,
         };
         // console.log(this.sorting);
-        this.searchAll();
+        // this.searchAll();
+        this.searchAllTrashCan();
     }
 
     onSearchSubmit(): void {
         // console.log('searchValue', this.searchForm.value.searchValue);
         this.searchValue = this.searchForm.value.searchValue ?? '';
-        this.searchAll();
+        // this.searchAll();
+        this.searchAllTrashCan();
     }
 
     // ファイルサイズの単位を変換する
@@ -99,7 +104,8 @@ export class UsersTableComponent implements OnInit {
 
         this.usersService.cancelDelete(fileNo)
             .subscribe(users => {
-                this.searchAll()
+                // this.searchAll();
+                this.searchAllTrashCan();
         });
 
     };
@@ -108,8 +114,8 @@ export class UsersTableComponent implements OnInit {
     deletePermanently(fileNo: number){
         this.usersService.deletePermanently(fileNo)
             .subscribe(users => {
-                this.searchAll()
-                // this.searchAllTrashCan();
+                // this.searchAll();
+                this.searchAllTrashCan();
         });
     };
 

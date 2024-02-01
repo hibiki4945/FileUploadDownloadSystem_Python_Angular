@@ -33,6 +33,8 @@
         </tr>
     </thead>
     <tbody>
+        <!-- <tr *ngFor="let user of users; trackBy: searchAll"> -->
+        <!-- <tr *ngFor="let user of users | async"> -->
         <tr *ngFor="let user of users">
             <!-- <td *ngFor="let column of columns" class="users-table-cell">
                 {{ user[column] }}
