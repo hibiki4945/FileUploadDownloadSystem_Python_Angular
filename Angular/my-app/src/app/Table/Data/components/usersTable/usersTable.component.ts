@@ -28,18 +28,19 @@ export class UsersTableComponent implements OnInit {
 
     users: UserInterface[] = [];
     // users: BehaviorSubject<UserInterface[]>;
-    usersTemp: UserInterface = {
-        FILE_NO: 0,
-        FILE_NAME: "",
-        FILE_SIZE: 0,
-        UPDATE_YEAR: "",
-        UPDATE_MONTH: "",
-        UPDATE_DAY: "",
-        FILE_FORMAT: "",
-        FILE_PATH: "",
-        SAVE_NAME: "",
-        DEL_FLG: 0,
-    }
+    // usersTemp: UserInterface = {
+    //     FILE_NO: 0,
+    //     FILE_NAME: "",
+    //     FILE_SIZE: 0,
+    //     UPDATE_YEAR: "",
+    //     UPDATE_MONTH: "",
+    //     UPDATE_DAY: "",
+    //     FILE_FORMAT: "",
+    //     FILE_PATH: "",
+    //     SAVE_NAME: "",
+    //     DEL_FLG: 0,
+    //     CHECKED: false,
+    // }
     // columns: Array<keyof UserInterface> = ["FILE_NO", "FILE_NAME", "FILE_SIZE", "UPDATE_YEAR", "UPDATE_MONTH", "UPDATE_DAY", "FILE_FORMAT", "FILE_PATH", "SAVE_NAME", "DEL_FLG"];
     // columns: Array<keyof UserInterface> = ["FILE_NAME", "FILE_SIZE", "UPDATE_YEAR", "UPDATE_MONTH", "UPDATE_DAY", "FILE_FORMAT", "FILE_PATH", "SAVE_NAME", "DEL_FLG"];
     sorting: SortingInterface = {
@@ -160,6 +161,23 @@ export class UsersTableComponent implements OnInit {
 
             // console.log(this.checkedList);
 
+        };
+
+        selectedAll(){
+            if(this.checkedList.length !== this.users.length){
+                this.users.forEach(item => {
+                    if(!this.checkedList.includes(item.FILE_NAME))
+                        this.checkedList.push(item.FILE_NAME);
+                    item.CHECKED = true;
+                });
+            }
+            else{
+                this.checkedList = []
+                this.users.forEach(item => {
+                    item.CHECKED = false;
+                });
+            }
+            // console.log(this.checkedList)
         };
 
         multipleDownload(){

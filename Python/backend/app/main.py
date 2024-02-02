@@ -88,6 +88,7 @@ def searchAll():
             "FILE_PATH": item[7],
             "SAVE_NAME": item[8],
             "DEL_FLG": item[9],
+            "CHECKED": False,
         }
         # resultReturn.append(item)
         resultReturn.append(itemTemp)

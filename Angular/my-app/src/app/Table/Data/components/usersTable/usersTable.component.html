@@ -22,7 +22,8 @@
                 <span *ngIf="isDescSorting(column)">▼</span>
                 <span *ngIf="isAscSorting(column)">▲</span>
             </th> -->
-            <th class="users-table-cell">
+            <th class="users-table-cell">    
+                <input type="checkbox" (change)="selectedAll()"/>
             </th>
             <th class="users-table-cell">
                 動作
@@ -45,7 +46,7 @@
         <tr *ngFor="let user of users">
             <td class="users-table-cell">
                 <!-- <input type="checkbox" (change)="updateSelected(user['FILE_NO'], $event)"/> -->
-                <input type="checkbox" (change)="updateSelected(user['FILE_NAME'], $event)"/>
+                <input type="checkbox" [checked]="user['CHECKED']" (change)="updateSelected(user['FILE_NAME'], $event)"/>
             </td>
             <td class="users-table-cell">
                 <button type="button" (click)="download(user['FILE_NO'], user['FILE_NAME'])">ダウンロード</button>

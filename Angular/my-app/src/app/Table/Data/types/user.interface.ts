@@ -9,4 +9,5 @@ export interface UserInterface {
     FILE_PATH: string;
     SAVE_NAME: string;
     DEL_FLG: number;
+    CHECKED: boolean;
 }
