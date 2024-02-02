@@ -164,7 +164,7 @@ def searchFilePath():
     print(resultReturn)
 
     # 検索結果を返す
-    return {'code': '200', 'path': resultReturn}
+    return resultReturn
 
 @app.post("/updateFilePath")
 def updateFilePath(path: str = Form(...)):
