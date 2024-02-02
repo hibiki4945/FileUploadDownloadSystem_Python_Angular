@@ -3,6 +3,7 @@ import { UsersService } from "../../services/users.service";
 import { UserInterface } from "../../types/user.interface";
 import { SortingInterface } from "../../types/sorting.interface";
 import { FormBuilder } from "@angular/forms";
+import { TitleInterface } from "../../types/title.interface";
 // import { BehaviorSubject } from "rxjs";
 // import { TrashCanTableModule } from '../../../TrashCan/usersTable.module';
 // import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -25,6 +26,11 @@ export class UsersTableComponent implements OnInit {
     // }
 
     checkedList: string[] = [];
+
+    // selectedAllCheckedFlag: boolean = false;
+
+    // titles: TitleInterface[] = [{selectedAllChecked: false}];
+    titles: TitleInterface[] = [];
 
     currentPage: number = 1;
 
@@ -63,6 +69,12 @@ export class UsersTableComponent implements OnInit {
 
     ngOnInit(): void {
         this.searchAll()
+        this.titles = []
+        this.titles.push({"selectedAllChecked": false})
+        console.log(this.titles)
+        this.titles.forEach(item => {
+            console.log(item.selectedAllChecked);
+        });
     }
 
     searchAll(): void {
@@ -70,7 +82,14 @@ export class UsersTableComponent implements OnInit {
             console.log("this.usersService.getUsers")
             // users: UserInterface[] = [];
             this.pageNum = Math.floor(users.length/10)+1;
-            console.log(this.pageNum);
+            // console.log(this.pageNum);
+            this.checkedList = []
+            
+            this.titles = []
+            this.titles.push({"selectedAllChecked": false})
+            // this.selectedAllChecked = false;
+            // console.log(this.selectedAllChecked)
+            // this.selectedAllChecked = true;
             this.users = []
             users.forEach((item, index) => {
                 // console.log(this.currentPage)
@@ -82,7 +101,7 @@ export class UsersTableComponent implements OnInit {
             // this.users = users
             // this.users = [...this.users]
             this.changeDetector.markForCheck();
-            console.log(this.users)
+            // console.log(this.users)
         });
     }
 
@@ -192,6 +211,16 @@ export class UsersTableComponent implements OnInit {
             }
             // console.log(this.checkedList)
         };
+
+        // selectTest(){
+        //     // this.selectedAllChecked = false;
+        //     this.selectedAllCheckedFlag = false;
+        // };
+
+        // selectedAllChecked(): boolean{
+        //     // return false;
+        //     return this.selectedAllCheckedFlag;
+        // };
 
         multipleDownload(){
             this.usersService.multipleDownload(this.checkedList)

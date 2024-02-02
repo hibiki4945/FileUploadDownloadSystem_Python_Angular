@@ -22,8 +22,10 @@
                 <span *ngIf="isDescSorting(column)">▼</span>
                 <span *ngIf="isAscSorting(column)">▲</span>
             </th> -->
-            <th class="users-table-cell-checkbox">
-                <input type="checkbox" (change)="selectedAll()"/>
+            <th class="users-table-cell-checkbox" *ngFor="let title of titles">
+                <input type="checkbox" [checked]="title.selectedAllChecked" (click)="selectedAll()"/>
+                <!-- <input type="checkbox" [checked]="title[selectedAllChecked]" (click)="selectedAll()"/> -->
+                <!-- <button type="button" (click)="selectTest()">selectTest</button> -->
             </th>
             <th class="users-table-cell">
                 動作
