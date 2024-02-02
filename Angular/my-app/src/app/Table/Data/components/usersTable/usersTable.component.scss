@@ -1,91 +1,91 @@
-.users-table{
-    table-layout: fixed;
-    width: 100%;
-    border-collapse: collapse;
-}
+// .users-table{
+//     table-layout: fixed;
+//     width: 100%;
+//     // border-collapse: collapse;
+// }
 
-.users-table-cell{
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-    overflow-x: auto;
-}
+// .users-table-cell{
+//     border: 1px solid #dddddd;
+//     text-align: left;
+//     padding: 8px;
+//     // overflow-x: auto;
+// }
 
-.users-table-cell-path{
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-    // width: 200px;
-}
+// .users-table-cell-path{
+//     border: 1px solid #dddddd;
+//     text-align: left;
+//     padding: 8px;
+//     // width: 200px;
+// }
 
-.users-table-cell-path-data{
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 0 8px;
-    // width: 200px;
-    overflow-x: scroll;
-}
+// .users-table-cell-path-data{
+//     border: 1px solid #dddddd;
+//     text-align: left;
+//     padding: 0 8px;
+//     // width: 200px;
+//     overflow-x: scroll;
+// }
 
-.users-table-cell-checkbox{
-    border: 1px solid #dddddd;
-    text-align: center;
-    padding: 8px;
-    width: 60px;
-}
+// .users-table-cell-checkbox{
+//     border: 1px solid #dddddd;
+//     text-align: center;
+//     padding: 8px;
+//     width: 60px;
+// }
 
-.search-bar{
-    margin-bottom: 20px;
-}
+// .search-bar{
+//     margin-bottom: 20px;
+// }
 
-.downloadButton{
-    color: white;
-    background-color: rgb(107, 127, 214);
-    border: 1px solid black;
-    border-radius: 4px;
-    transition-duration: 0.4s;
-    box-shadow: 4px 4px 2px #999;
-    margin-right: 10px;
+// .downloadButton{
+//     // color: white;
+//     // background-color: rgb(107, 127, 214);
+//     // border: 1px solid black;
+//     // border-radius: 4px;
+//     transition-duration: 0.4s;
+//     box-shadow: 4px 4px 2px #999;
+//     margin-right: 10px;
     
-    &:hover {
-        background-color: blue; /* Green */
-    }
+//     &:hover {
+//         background-color: blue; /* Green */
+//     }
     
-    &:active {
-        box-shadow: 2px 2px 1px #666;
-        transform: translateY(4px);
-    }
-}
+//     &:active {
+//         box-shadow: 2px 2px 1px #666;
+//         transform: translateY(4px);
+//     }
+// }
 
-.deleteButton{
-    margin-top: 10px;
-    color: white;
-    background-color: rgb(255, 57, 57);
-    border: 1px solid black;
-    border-radius: 4px;
-    transition-duration: 0.4s;
-    box-shadow: 4px 4px 2px #999;
+// .deleteButton{
+//     margin-top: 10px;
+//     color: white;
+//     background-color: rgb(255, 57, 57);
+//     border: 1px solid black;
+//     border-radius: 4px;
+//     transition-duration: 0.4s;
+//     box-shadow: 4px 4px 2px #999;
     
-    &:hover {
-        background-color: rgb(255, 24, 24); /* Green */
-    }
+//     &:hover {
+//         background-color: rgb(255, 24, 24); /* Green */
+//     }
     
-    &:active {
-        box-shadow: 2px 2px 1px #666;
-        transform: translateY(4px);
-    }
-}
+//     &:active {
+//         box-shadow: 2px 2px 1px #666;
+//         transform: translateY(4px);
+//     }
+// }
 
-.pageArea{
-    // display: flex;
-    // justify-content: end;
-    // align-items: end;
-    position: absolute;
-    bottom: 0px;
-    left: 0px;
-}
+// .pageArea{
+//     // display: flex;
+//     // justify-content: end;
+//     // align-items: end;
+//     position: absolute;
+//     bottom: 0px;
+//     left: 0px;
+// }
 
-.container{
-    height: 100vh;
-    border: 1px solid black;
-    position: relative;
-}
+// .container{
+//     // height: 100vh;
+//     // border: 1px solid black;
+//     // position: relative;
+// }

@@ -7,12 +7,14 @@
 <!-- <form [formGroup]="searchForm" (ngSubmit)="onSearchSubmit()">
     <input type="text" placeholder="Search..." formControlName="searchValue"/>
 </form> -->
-<div class="container">
+<div class="vh-100 position-relative border p-2">
+<!-- <div class="w-100 h-full border-primary"> -->
 
     <div class="search-bar">
-        <button type="button" class="downloadButton" (click)="multipleDownload()">複数ダウンロード</button>
+        <!-- <button type="button" class="downloadButton text-white border-primary" (click)="multipleDownload()">複数ダウンロード</button> -->
+        <button type="button" class="text-white btn btn-primary mt-1" (click)="multipleDownload()">複数ダウンロード</button>
     </div>
-    <table class="users-table">
+    <table class="w-100 my-2" style="table-layout:fixed;">
         <thead>
             <tr>
                 <!-- <th 
@@ -24,57 +26,58 @@
                     <span *ngIf="isDescSorting(column)">▼</span>
                     <span *ngIf="isAscSorting(column)">▲</span>
                 </th> -->
-                <th class="users-table-cell-checkbox" *ngFor="let title of titles">
+                <th class="border border-gray px-3 w-5" *ngFor="let title of titles">
                     <input type="checkbox" [checked]="title.selectedAllChecked" (click)="selectedAll()"/>
                     <!-- <input type="checkbox" [checked]="title[selectedAllChecked]" (click)="selectedAll()"/> -->
                     <!-- <button type="button" (click)="selectTest()">selectTest</button> -->
                 </th>
-                <th class="users-table-cell">
+                <!-- <th class="users-table-cell"> -->
+                <th class="border border-gray p-2">
                     動作
                 </th>
-                <th class="users-table-cell">
+                <th class="border border-gray p-2">
                     ファイル名
                 </th>
-                <th class="users-table-cell">
+                <th class="border border-gray p-2">
                     ファイルサイズ
                 </th>
-                <th class="users-table-cell">
+                <th class="border border-gray p-2">
                     更新日付
                 </th>
-                <th class="users-table-cell-path">
+                <th class="border border-gray p-2">
                     ファイルパス
                 </th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let user of users">
-                <td class="users-table-cell-checkbox">
+                <td class="border border-gray px-3 w-5">
                     <!-- <input type="checkbox" (change)="updateSelected(user['FILE_NO'], $event)"/> -->
                     <input type="checkbox" [checked]="user['CHECKED']" (change)="updateSelected(user['FILE_NAME'], $event)"/>
                 </td>
-                <td class="users-table-cell">
-                    <button type="button" class="downloadButton" (click)="download(user['FILE_NO'], user['FILE_NAME'])">ダウンロード</button>
-                    <button type="button" class="deleteButton" (click)="deleteFile(user['FILE_NO'])">削除</button>
+                <td class="border border-gray p-2">
+                    <button type="button" class="text-white btn btn-primary me-1" (click)="download(user['FILE_NO'], user['FILE_NAME'])">ダウンロード</button>
+                    <button type="button" class="text-white btn btn-danger" (click)="deleteFile(user['FILE_NO'])">削除</button>
                 </td>
-                <td class="users-table-cell">
+                <td class="border border-gray p-2">
                     {{ user["FILE_NAME"] }}
                 </td>
-                <td class="users-table-cell">
+                <td class="border border-gray p-2">
                     {{ fileSizeUnit(user["FILE_SIZE"]) }}
                 </td>
-                <td class="users-table-cell">
+                <td class="border border-gray p-2">
                     {{ user["UPDATE_YEAR"]+"/"+user["UPDATE_MONTH"]+"/"+user["UPDATE_DAY"] }}
                 </td>
-                <td class="users-table-cell-path-data">
+                <td class="border border-gray px-2 overflow-x-scroll">
                     {{ user["FILE_PATH"] }}
                 </td>
             </tr>
         </tbody>
     </table>
-    <div class="pageArea">
-        <button (click)="firstPage()">最初のページ</button>
-        <button (click)="frontPage()">前のページ</button>
-        <button (click)="nextPage()">次のページ</button>
-        <button (click)="lastPage()">最後のページ</button>
+    <div class="position-absolute bottom-0 start-0">
+        <button class="text-white btn btn-primary ms-2 mb-1" (click)="firstPage()">最初のページ</button>
+        <button class="text-white btn btn-primary ms-1 mb-1" (click)="frontPage()">前のページ</button>
+        <button class="text-white btn btn-primary ms-1 mb-1" (click)="nextPage()">次のページ</button>
+        <button class="text-white btn btn-primary ms-1 mb-1" (click)="lastPage()">最後のページ</button>
     </div>
 </div>
