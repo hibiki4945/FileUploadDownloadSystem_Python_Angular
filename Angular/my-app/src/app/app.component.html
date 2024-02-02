@@ -9,16 +9,20 @@
 
 <style>
 </style>
-
 <main class="main">
-  <h1>Angular Router Sample</h1>
-  <router-outlet></router-outlet>
-  <nav>
-    <a class="button" routerLink="/path-set">PathSet</a> |
-    <a class="button" routerLink="/file-upload">FileUpload</a> |
-    <a class="button" routerLink="/data">Data</a> |
-    <a class="button" routerLink="/trash">Trash</a>
-  </nav>
+  <!-- <router-outlet></router-outlet> -->
+  <div class="container">
+    <nav class="leftArea">
+      <a class="button" routerLink="/path-set">パス設定</a>
+      <!-- <a class="button" routerLink="/path-set">path-set</a> -->
+      <a class="button" routerLink="/file-upload">ファイルアップロード</a>
+      <a class="button" routerLink="/data">ファイルダウンロード</a>
+      <a class="button" routerLink="/trash">ゴミ箱</a>
+    </nav>
+    <nav class="middleArea">
+      <router-outlet />
+    </nav>
+  </div>
 </main>
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
@@ -28,6 +32,3 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * End of Placeholder  * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-
-
-<router-outlet />

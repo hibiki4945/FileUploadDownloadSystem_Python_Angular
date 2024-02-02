@@ -1,8 +1,36 @@
 .ngx-form-checkbox input:checked + .ngx-form-icon.custom-checkbox-color {
-    background: #963dc3;
-    border: #682b88;
-  }
-  
-  .sub-header {
-    margin-top: 2rem;
-  }
+  background: #963dc3;
+  border: #682b88;
+}
+
+.sub-header {
+  margin-top: 2rem;
+}
+
+.container {
+  display: flex;
+  height: 90vh;
+}
+
+.leftArea {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 60%;
+  width: 25%;
+  /* width: 200px; */
+}
+
+.middleArea {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  height: inherit;
+  width: 75%;
+}
+
+.button {
+  text-decoration: none;
+  /* width: inherit; */
+  width: 100%;
+}

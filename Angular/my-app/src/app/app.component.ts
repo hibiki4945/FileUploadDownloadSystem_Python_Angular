@@ -46,7 +46,6 @@ import axios from 'axios';
     DataTableModule,
     HttpClientModule,
     TrashCanTableModule,
-    RouterOutlet,
     RouterLink,
   ],
   templateUrl: './app.component.html',

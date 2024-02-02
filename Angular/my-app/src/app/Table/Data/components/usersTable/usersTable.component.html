@@ -8,7 +8,7 @@
     <input type="text" placeholder="Search..." formControlName="searchValue"/>
 </form> -->
 <div class="search-bar">
-    <button type="button" (click)="multipleDownload()">複数ダウンロード</button>
+    <button type="button" class="downloadButton" (click)="multipleDownload()">複数ダウンロード</button>
 </div>
 <table class="users-table">
     <thead>
@@ -22,7 +22,7 @@
                 <span *ngIf="isDescSorting(column)">▼</span>
                 <span *ngIf="isAscSorting(column)">▲</span>
             </th> -->
-            <th class="users-table-cell">    
+            <th class="users-table-cell-checkbox">
                 <input type="checkbox" (change)="selectedAll()"/>
             </th>
             <th class="users-table-cell">
@@ -44,13 +44,13 @@
     </thead>
     <tbody>
         <tr *ngFor="let user of users">
-            <td class="users-table-cell">
+            <td class="users-table-cell-checkbox">
                 <!-- <input type="checkbox" (change)="updateSelected(user['FILE_NO'], $event)"/> -->
                 <input type="checkbox" [checked]="user['CHECKED']" (change)="updateSelected(user['FILE_NAME'], $event)"/>
             </td>
             <td class="users-table-cell">
-                <button type="button" (click)="download(user['FILE_NO'], user['FILE_NAME'])">ダウンロード</button>
-                <button type="button" (click)="deleteFile(user['FILE_NO'])">削除</button>
+                <button type="button" class="downloadButton" (click)="download(user['FILE_NO'], user['FILE_NAME'])">ダウンロード</button>
+                <button type="button" class="deleteButton" (click)="deleteFile(user['FILE_NO'])">削除</button>
             </td>
             <td class="users-table-cell">
                 {{ user["FILE_NAME"] }}
