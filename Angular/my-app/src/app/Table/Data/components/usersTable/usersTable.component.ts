@@ -26,6 +26,10 @@ export class UsersTableComponent implements OnInit {
 
     checkedList: string[] = [];
 
+    currentPage: number = 1;
+
+    pageNum: number = 0;
+
     users: UserInterface[] = [];
     // users: BehaviorSubject<UserInterface[]>;
     // usersTemp: UserInterface = {
@@ -65,8 +69,17 @@ export class UsersTableComponent implements OnInit {
         this.usersService.getUsers(this.sorting, this.searchValue).subscribe(users => {
             console.log("this.usersService.getUsers")
             // users: UserInterface[] = [];
-            
-            this.users = users
+            this.pageNum = Math.floor(users.length/10)+1;
+            console.log(this.pageNum);
+            this.users = []
+            users.forEach((item, index) => {
+                // console.log(this.currentPage)
+                // console.log((Math.floor((index+1)/10)+1))
+                if(this.currentPage === Math.floor((index)/10)+1){
+                    this.users.push(item)
+                }
+            });
+            // this.users = users
             // this.users = [...this.users]
             this.changeDetector.markForCheck();
             console.log(this.users)
@@ -197,6 +210,28 @@ export class UsersTableComponent implements OnInit {
                     // 当リンクをクリックし、ダウンロードを行う
                     link.click();
             });
+        };
+
+        firstPage(){
+            this.currentPage = 1;
+            this.searchAll();
+        };
+
+        frontPage(){
+            if(this.currentPage > 1)
+                this.currentPage--;
+            this.searchAll();
+        };
+
+        nextPage(){
+            if(this.currentPage < this.pageNum)
+                this.currentPage++;
+            this.searchAll();
+        };
+
+        lastPage(){
+            this.currentPage = this.pageNum;
+            this.searchAll();
         };
 
 }
