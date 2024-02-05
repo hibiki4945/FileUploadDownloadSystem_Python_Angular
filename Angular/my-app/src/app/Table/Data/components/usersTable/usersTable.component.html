@@ -30,7 +30,6 @@
         <tbody>
             <tr *ngFor="let user of users">
                 <td class="d-none-600 border border-gray px-3 w-3v">
-                <!-- <td class="d-none-600 border border-gray px-3 w-auto"> -->
                     <div class="d-flex justify-content-center align-items-center">
                         <input type="checkbox" [checked]="user['CHECKED']" (change)="updateSelected(user['FILE_NAME'], $event)"/>
                     </div>

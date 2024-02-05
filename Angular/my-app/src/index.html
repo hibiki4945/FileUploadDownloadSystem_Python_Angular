@@ -8,8 +8,23 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
-  <header>
+  <header class="d-flex flex-column">
     <h1>ファイル管理システム</h1>
+    
+    <nav id="primary_nav_wrap">
+      <ul>
+        <li class="current-menu-item"><a href="#">ホームページ</a></li>
+        <li><span>|</span></li>
+        <li><a href="#">機能選択</a>
+          <ul>
+            <li><a href="/path-set">パス設定</a></li>
+            <li><a href="/file-upload">ファイルアップロード</a></li>
+            <li><a href="/data">ファイルダウンロード</a></li>
+            <li><a href="/trash">ゴミ箱</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
   </header>
   <app-root></app-root>
   <footer>
