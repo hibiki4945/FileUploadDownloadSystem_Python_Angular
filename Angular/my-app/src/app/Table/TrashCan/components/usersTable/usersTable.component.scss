@@ -1,67 +1,67 @@
-.users-table{
-    table-layout: fixed;
-    width: 100%;
-    border-collapse: collapse;
-}
+// .users-table{
+//     table-layout: fixed;
+//     width: 100%;
+//     border-collapse: collapse;
+// }
 
-.users-table-cell{
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-}
+// .users-table-cell{
+//     border: 1px solid #dddddd;
+//     text-align: left;
+//     padding: 8px;
+// }
 
-.users-table-cell-path{
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-    width: 200px;
-}
+// .users-table-cell-path{
+//     border: 1px solid #dddddd;
+//     text-align: left;
+//     padding: 8px;
+//     width: 200px;
+// }
 
-.users-table-cell-path-data{
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-    width: 200px;
-    overflow-x: scroll;
-}
+// .users-table-cell-path-data{
+//     border: 1px solid #dddddd;
+//     text-align: left;
+//     padding: 8px;
+//     width: 200px;
+//     overflow-x: scroll;
+// }
 
-.search-bar{
-    margin-bottom: 20px;
-}
+// .search-bar{
+//     margin-bottom: 20px;
+// }
 
-.cancelDeleteButton{
-    color: white;
-    background-color: rgb(107, 127, 214);
-    border: 1px solid black;
-    border-radius: 4px;
-    transition-duration: 0.4s;
-    box-shadow: 4px 4px 2px #999;
+// .cancelDeleteButton{
+//     color: white;
+//     background-color: rgb(107, 127, 214);
+//     border: 1px solid black;
+//     border-radius: 4px;
+//     transition-duration: 0.4s;
+//     box-shadow: 4px 4px 2px #999;
     
-    &:hover {
-        background-color: blue; /* Green */
-    }
+//     &:hover {
+//         background-color: blue; /* Green */
+//     }
     
-    &:active {
-        box-shadow: 2px 2px 1px #666;
-        transform: translateY(4px);
-    }
-}
+//     &:active {
+//         box-shadow: 2px 2px 1px #666;
+//         transform: translateY(4px);
+//     }
+// }
 
-.deletePermanentlyButton{
-    margin-top: 10px;
-    color: white;
-    background-color: rgb(255, 57, 57);
-    border: 1px solid black;
-    border-radius: 4px;
-    transition-duration: 0.4s;
-    box-shadow: 4px 4px 2px #999;
+// .deletePermanentlyButton{
+//     margin-top: 10px;
+//     color: white;
+//     background-color: rgb(255, 57, 57);
+//     border: 1px solid black;
+//     border-radius: 4px;
+//     transition-duration: 0.4s;
+//     box-shadow: 4px 4px 2px #999;
     
-    &:hover {
-        background-color: rgb(255, 24, 24); /* Green */
-    }
+//     &:hover {
+//         background-color: rgb(255, 24, 24); /* Green */
+//     }
     
-    &:active {
-        box-shadow: 2px 2px 1px #666;
-        transform: translateY(4px);
-    }
-}
+//     &:active {
+//         box-shadow: 2px 2px 1px #666;
+//         transform: translateY(4px);
+//     }
+// }

@@ -1,42 +1,39 @@
-.ngx-form-checkbox input:checked + .ngx-form-icon.custom-checkbox-color {
+/* .ngx-form-checkbox input:checked + .ngx-form-icon.custom-checkbox-color {
   background: #963dc3;
   border: #682b88;
 }
 
 .sub-header {
   margin-top: 2rem;
-}
+} */
 
-.container {
+/* .container {
   display: flex;
   height: 120vh;
-}
+} */
 
-.leftArea {
+/* .leftArea {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   height: 60%;
   width: 25%;
-  /* width: 200px; */
-}
+} */
 
-.middleArea {
+/* .middleArea {
   display: flex;
   flex-direction: column;
   justify-content: start;
   height: inherit;
   width: 75%;
-}
+} */
 
-.button {
+/* .button {
   text-decoration: none;
-  /* width: inherit; */
-  /* width: 100%; */
   background-color: rebeccapurple;
   border: 1px solid black;
   border-radius: 4px;
   padding: 10px;
   margin: 20px;
   color: white;
-}
+} */

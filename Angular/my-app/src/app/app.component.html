@@ -9,17 +9,16 @@
 
 <style>
 </style>
-<main class="main">
-  <!-- <router-outlet></router-outlet> -->
-  <div class="container">
-    <nav class="leftArea">
-      <a class="button" routerLink="/path-set">パス設定</a>
-      <!-- <a class="button" routerLink="/path-set">path-set</a> -->
-      <a class="button" routerLink="/file-upload">ファイルアップロード</a>
-      <a class="button" routerLink="/data">ファイルダウンロード</a>
-      <a class="button" routerLink="/trash">ゴミ箱</a>
+<!-- <main class="main"> -->
+<main>
+  <div class="vh-120 d-flex px-10">
+    <nav class="d-flex flex-column h-60 w-25">
+      <a class="text-white text-decoration-none bg-primary border border-black rounded p-10p m-20p" routerLink="/path-set">パス設定</a>
+      <a class="text-white text-decoration-none bg-primary border border-black rounded p-10p m-20p" routerLink="/file-upload">ファイルアップロード</a>
+      <a class="text-white text-decoration-none bg-primary border border-black rounded p-10p m-20p" routerLink="/data">ファイルダウンロード</a>
+      <a class="text-white text-decoration-none bg-primary border border-black rounded p-10p m-20p" routerLink="/trash">ゴミ箱</a>
     </nav>
-    <nav class="middleArea">
+    <nav class="d-flex flex-column justify-content-start h-i w-75">
       <router-outlet />
     </nav>
   </div>

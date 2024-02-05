@@ -1,74 +1,49 @@
-<!-- <div class="search-bar">
-    <form [formGroup]="searchForm" (ngSubmit)="onSearchSubmit()">
-        <input type="text" placeholder="Search..." formControlName="searchValue"/>
-    </form>
-</div> -->
-
-<!-- <form [formGroup]="searchForm" (ngSubmit)="onSearchSubmit()">
-    <input type="text" placeholder="Search..." formControlName="searchValue"/>
-</form> -->
 <div class="vh-100 position-relative border p-2">
-<!-- <div class="w-100 h-full border-primary"> -->
-
-    <div class="search-bar">
-        <!-- <button type="button" class="downloadButton text-white border-primary" (click)="multipleDownload()">複数ダウンロード</button> -->
+    <!-- <div class="search-bar">
         <button type="button" class="text-white btn btn-primary mt-1" (click)="multipleDownload()">複数ダウンロード</button>
-    </div>
-    <table class="w-100 my-2" style="table-layout:fixed;">
+    </div> -->
+    <table class="w-100 my-2 container" style="table-layout:fixed;">
         <thead>
             <tr>
-                <!-- <th 
-                    *ngFor ="let column of columns" 
-                    class="users-table-cell" 
-                    (click)="sortTable(column)"
-                >
-                    {{ capitalize(column) }}
-                    <span *ngIf="isDescSorting(column)">▼</span>
-                    <span *ngIf="isAscSorting(column)">▲</span>
-                </th> -->
-                <th class="border border-gray px-3 w-5" *ngFor="let title of titles">
+                <th class="d-none-600 border border-gray px-3 w-5" *ngFor="let title of titles">
                     <input type="checkbox" [checked]="title.selectedAllChecked" (click)="selectedAll()"/>
-                    <!-- <input type="checkbox" [checked]="title[selectedAllChecked]" (click)="selectedAll()"/> -->
-                    <!-- <button type="button" (click)="selectTest()">selectTest</button> -->
                 </th>
-                <!-- <th class="users-table-cell"> -->
-                <th class="border border-gray p-2">
+                <th class="d-none-600 border border-gray p-2">
                     動作
                 </th>
-                <th class="border border-gray p-2">
+                <th class="d-none-600 border border-gray p-2">
                     ファイル名
                 </th>
-                <th class="border border-gray p-2">
+                <th class="d-none-1500 border border-gray p-2">
                     ファイルサイズ
                 </th>
-                <th class="border border-gray p-2">
+                <th class="d-none-1500 border border-gray p-2">
                     更新日付
                 </th>
-                <th class="border border-gray p-2">
+                <th class="d-none-1500 border border-gray p-2">
                     ファイルパス
                 </th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let user of users">
-                <td class="border border-gray px-3 w-5">
-                    <!-- <input type="checkbox" (change)="updateSelected(user['FILE_NO'], $event)"/> -->
+                <td class="d-none-600 border border-gray px-3 w-5">
                     <input type="checkbox" [checked]="user['CHECKED']" (change)="updateSelected(user['FILE_NAME'], $event)"/>
                 </td>
-                <td class="border border-gray p-2">
+                <td class="d-none-600 border border-gray p-2">
                     <button type="button" class="text-white btn btn-primary me-1" (click)="download(user['FILE_NO'], user['FILE_NAME'])">ダウンロード</button>
                     <button type="button" class="text-white btn btn-danger" (click)="deleteFile(user['FILE_NO'])">削除</button>
                 </td>
-                <td class="border border-gray p-2">
+                <td class="d-none-600 border border-gray p-2">
                     {{ user["FILE_NAME"] }}
                 </td>
-                <td class="border border-gray p-2">
+                <td class="d-none-1500 border border-gray p-2">
                     {{ fileSizeUnit(user["FILE_SIZE"]) }}
                 </td>
-                <td class="border border-gray p-2">
+                <td class="d-none-1500 d-display-lg border border-gray p-2">
                     {{ user["UPDATE_YEAR"]+"/"+user["UPDATE_MONTH"]+"/"+user["UPDATE_DAY"] }}
                 </td>
-                <td class="border border-gray px-2 overflow-x-scroll">
+                <td class="d-none-1500 d-display-xl border border-gray px-2 overflow-x-scroll">
                     {{ user["FILE_PATH"] }}
                 </td>
             </tr>
