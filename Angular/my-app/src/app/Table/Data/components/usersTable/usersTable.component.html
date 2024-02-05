@@ -5,8 +5,10 @@
     <table class="w-100 my-2 container" style="table-layout:fixed;">
         <thead>
             <tr>
-                <th class="d-none-600 border border-gray px-3 w-5" *ngFor="let title of titles">
-                    <input type="checkbox" [checked]="title.selectedAllChecked" (click)="selectedAll()"/>
+                <th class="d-none-600 border border-gray px-3 w-3v" *ngFor="let title of titles">
+                    <div class=" d-flex justify-content-center align-items-center">
+                        <input type="checkbox" [checked]="title.selectedAllChecked" (click)="selectedAll()"/>
+                    </div>
                 </th>
                 <th class="d-none-600 border border-gray p-2">
                     動作
@@ -27,8 +29,11 @@
         </thead>
         <tbody>
             <tr *ngFor="let user of users">
-                <td class="d-none-600 border border-gray px-3 w-5">
-                    <input type="checkbox" [checked]="user['CHECKED']" (change)="updateSelected(user['FILE_NAME'], $event)"/>
+                <td class="d-none-600 border border-gray px-3 w-3v">
+                <!-- <td class="d-none-600 border border-gray px-3 w-auto"> -->
+                    <div class="d-flex justify-content-center align-items-center">
+                        <input type="checkbox" [checked]="user['CHECKED']" (change)="updateSelected(user['FILE_NAME'], $event)"/>
+                    </div>
                 </td>
                 <td class="d-none-600 border border-gray p-2">
                     <button type="button" class="text-white btn btn-primary me-1" (click)="download(user['FILE_NO'], user['FILE_NAME'])">ダウンロード</button>
